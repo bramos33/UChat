@@ -1,4 +1,33 @@
-const io = require('socket.io')(3000)
+var app = require('express')();
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/login.html');
+});
+
+app.get('/index.html', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/script.js', function(req, res) {
+    res.sendFile(__dirname + '/script.js');
+});
+
+app.get('/login.js', function(req, res) {
+    res.sendFile(__dirname + '/login.js');
+});
+
+http.listen(3000, function(){
+  console.log('Chat Server listening at *:3000');
+});
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
 
 const users = {}
 

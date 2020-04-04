@@ -1,0 +1,86 @@
+
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login Form </title>
+		 <script defer src="login.js"></script>
+		<style>
+		
+		body {
+		  background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('https://oakland.edu/Assets/Oakland/newsatou/graphics/aerial-480.jpg');
+		  background-repeat: no-repeat;
+		  background-attachment: fixed;  
+		  background-size: cover;
+		}
+		.login-form {
+			width: 300px;
+			margin: 0 auto;
+			text-align: center;
+			color: #33A7FF;
+			font-size: 20px;
+			padding: 15px 0 15px 0;
+			font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+		}
+		
+		.login-form input[type="text"]
+		
+		 {
+			background-color: #3CBC8D;
+			color: #A52A2A;
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		
+		.login-form input[type="password"]
+		{
+			background-color: #3CBC8D;
+			color: #A52A2A;
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color: #7B7D7D ;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #33A7FF;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class="login-form">
+		
+			<h1>Login Form</h1>
+			
+			<form class ="login-form" id ="loginform" action = "/index.html">
+				
+				User Name: <input type="text" id="username" name="username"/>
+				Password: <input type="password" id="password" name="password"/>
+				<input class = ".login-form input" type="button" value="Login" id="submit" onclick="validate()"/>
+			</form>
+		</div>
+	</body>
+	
+</html>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
