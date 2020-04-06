@@ -9,9 +9,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bramos33/UChat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bramos33/UChat/issues"
+  },
+  "homepage": "https://github.com/bramos33/UChat#readme"
 }
