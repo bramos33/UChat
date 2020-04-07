@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,50 +14,60 @@
     <style>
         body {
             padding: 0;
-            margin: 0;
+            margin: 5px;
             display: flex;
             justify-content: left;
             background-color: rgb(97, 89, 89);
         }
+
         #room-users-container {
             padding: 0;
             margin: 0;
             justify-content: right;
             width: 20%;
+            background-color: black;
+            position: fixed;
+            left: 80%;
+            bottom: 0px;
+            top: 0px;
+
         }
+
         #room-users-container div {
             justify-content: left;
             color: white;
             padding: 5px;
         }
+
+
+
         #message-container {
             justify-content: left;
             width: 80%;
             max-width: 2560px;
+            position: fixed;
+            overflow-y: auto;         
         }
-        #message-container div {
-            justify-content: left;
-            color: white;
-            padding: 5px;
-        }
-        #message-container div:nth-child(2n) {
+
+        /* #message-container div:nth-child(2n) {
             background-color: #FFF;
-        }
+        } */
         #send-container {
             justify-content: left;
-			position: fixed;
-			
+            position: fixed;
+
             bottom: 0;
             max-width: 2560px;
             width: 75%;
-			border: solid;
-			border-color: black;
-			border-width: 2px;
-			padding-bottom: 30px;
-			padding-left: 5px;
+            border: solid;
+            border-color: black;
+            border-width: 2px;
+            margin-bottom: 30px;
+            margin-left: 5px;
             display: flex;
         }
-		#message-input {
+
+        #message-input {
             flex-grow: 1;
         }
     </style>
@@ -70,98 +81,5 @@
         <button type="submit" id="send-button">Send</button>
     </form>
 </body>
+
 </html>
-
-
- <!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chat App</title>
-    <script>
-        const roomName = "<%= roomName %>"
-    </script>
-    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script defer src="script.js"></script>
-    <style>
-
-       body {
-				background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://oakland.edu/Assets/Oakland/social-media/graphics/downloads/twitter/Summer_Sign-Twitter-Header.jpg');
-				background-repeat: no-repeat;
-				background-attachment: fixed;
-				background-size: cover;
-			}
-
-       
-
-		#room-users-container {
-				width: 300px;
-				margin: 0 auto;
-				text-align: center;
-				color: red;
-				font-size: 20px;
-				padding: 15px 0 15px 0;
-				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-			}
-		
-		#message-container {
-				width: 300px;
-				margin: 0 auto;
-				text-align: center;
-				color: blue;
-				font-size: 20px;
-				padding: 15px 0 15px 0;
-				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-			}
-        
-		#send-container {
-				width: 500px;
-				margin: 0 auto;
-				text-align: center;
-				color: orange;
-				font-size: 20px;
-				padding: 35px 0 15px 0;
-				font-family: "Book Antiqua", Palatino, serif;
-			}
-       
-		#send-container input[type="text"] {
-				background-color: #3C008D;
-				color: red;
-				text-align: left;
-				width: 100%;
-				padding: 15px;
-				border: 1px solid #dddddd;
-				margin-bottom: 15px;
-				box-sizing: border-box;
-			}
-
-
-
-        #send-container button {
-				width: 50%;
-				padding: 15px;
-				text-align: center;
-				background-color: green;
-				border: 0;
-				box-sizing: border-box;
-				cursor: pointer;
-				font-weight: bold;
-				color: #33A7FF;
-			}
-      
-    </style>
-</head>
-
-<body>
-    <div id="room-users-container"></div>
-	<div id="message-container"></div>
-	<form id="send-container" action="/" method="POST">
-        Type Chat Message here:<input type="text" id="message-input">
-        <button type="submit" id="send-button">Send</button>
-    </form>
-</body>
-
-</html> -->
