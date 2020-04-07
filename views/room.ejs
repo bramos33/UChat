@@ -12,60 +12,79 @@
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src="script.js"></script>
     <style>
-        body {
-            padding: 0;
-            margin: 0;
-            display: flex;
-            background-color: rgb(97, 89, 89);
-        }
 
-        #room-users-container {
-            padding: 0;
-            margin: 0;
-            justify-content: right;
-            width: 20%;
-        }
+       body {
+				background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://oakland.edu/Assets/Oakland/social-media/graphics/downloads/twitter/Summer_Sign-Twitter-Header.jpg');
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: cover;
+			}
 
-        #room-users-container div {
-            justify-content: left;
-            color: white;
-            padding: 5px;
-        }
+       
 
-        #message-container {
-            justify-content: left;
-            width: 80%;
-            max-width: 2560px;
-        }
+		#room-users-container {
+				width: 300px;
+				margin: 0 auto;
+				text-align: center;
+				color: red;
+				font-size: 20px;
+				padding: 15px 0 15px 0;
+				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+			}
+		
+		#message-container {
+				width: 300px;
+				margin: 0 auto;
+				text-align: center;
+				color: blue;
+				font-size: 20px;
+				padding: 15px 0 15px 0;
+				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+			}
+        
+		#send-container {
+				width: 500px;
+				margin: 0 auto;
+				text-align: center;
+				color: orange;
+				font-size: 20px;
+				padding: 35px 0 15px 0;
+				font-family: "Book Antiqua", Palatino, serif;
+			}
+       
+		#send-container input[type="text"] {
+				background-color: #3C008D;
+				color: red;
+				text-align: left;
+				width: 100%;
+				padding: 15px;
+				border: 1px solid #dddddd;
+				margin-bottom: 15px;
+				box-sizing: border-box;
+			}
 
-        #message-container div {
-            justify-content: left;
-            color: white;
-            padding: 5px;
-        }
 
-        #send-container {
-            justify-content: left;
-            position: fixed;
-            padding-bottom: 30px;
-            bottom: 0;
-            background-color: white;
-            max-width: 2560px;
-            width: 80%;
-            display: flex;
-        }
 
-        #message-input {
-            flex-grow: 1;
-        }
+        #send-container button {
+				width: 50%;
+				padding: 15px;
+				text-align: center;
+				background-color: green;
+				border: 0;
+				box-sizing: border-box;
+				cursor: pointer;
+				font-weight: bold;
+				color: #33A7FF;
+			}
+      
     </style>
 </head>
 
 <body>
-    <div id="message-container"></div>
     <div id="room-users-container"></div>
-    <form id="send-container">
-        <input type="text" id="message-input">
+	<div id="message-container"></div>
+	<form id="send-container" action="/" method="POST">
+        Type Chat Message here:<input type="text" id="message-input">
         <button type="submit" id="send-button">Send</button>
     </form>
 </body>

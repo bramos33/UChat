@@ -8,16 +8,67 @@
     <title>Chat App</title>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src="script.js"></script>
+	<style>
+			body {
+				background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://ucmapps.oakland.edu/NewsArchive/Data/upload/images/News/Campus/2013/1-Jan/550734_409460095740793_994392255_n.jpeg');
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: cover;
+			}
+			
+			#room-container {
+				width: 300px;
+				margin: 0 auto;
+				text-align: left;
+				color: red;
+				font-size: 20px;
+				padding: 15px 0 15px 0;
+				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+			}
+			
+			#chat {
+				width: 300px;
+				margin: 0 auto;
+				text-align: center;
+				color: #33A7FF;
+				font-size: 20px;
+				padding: 15px 0 15px 0;
+				font-family: "Book Antiqua", Palatino, serif;
+			}
+			
+			#chat input[type="text"] {
+				background-color: #3CBC00;
+				color: black;
+				width: 100%;
+				padding: 15px;
+				border: 1px solid #dddddd;
+				margin-bottom: 15px;
+				box-sizing: border-box;
+			}
+
+			
+			#chat button {
+				width: 100%;
+				padding: 15px;
+				background-color: #7B7D00;
+				border: 0;
+				box-sizing: border-box;
+				cursor: pointer;
+				font-weight: bold;
+				color: #33A7FF;
+			}
+
+	</style>
 </head>
 
 <body>
     <div id="room-container">
         <% Object.keys(rooms).forEach(room => { %>
-        <div><a href="/<%= room %>"><%= room %></a></div>
+        <div align="left"><a href="/<%= room %>" color ="orange" font-size="18px"> <span style="color:orange" align="left" font-size="18px"><%= room %></span></a></div>
         <% }) %>
     </div>
-    <form action="/room" method="POST">
-        <input name="room" type="text" required>
+    <form id="chat" form action="/room" method="POST">
+        Room Name: <input name="room" type="text" required>
         <button type="submit">Create Room</button>
     </form>
 </body>
