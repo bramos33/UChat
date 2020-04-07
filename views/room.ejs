@@ -16,30 +16,42 @@
             padding: 0;
             margin: 0;
             display: flex;
-            justify-content: center;
+            background-color: rgb(97, 89, 89);
+        }
+
+        #room-users-container {
+            padding: 0;
+            margin: 0;
+            justify-content: right;
+            width: 20%;
+        }
+
+        #room-users-container div {
+            justify-content: left;
+            color: white;
+            padding: 5px;
         }
 
         #message-container {
-            width: 100%;
+            justify-content: left;
+            width: 80%;
             max-width: 2560px;
         }
 
         #message-container div {
-            background-color: #CCC;
+            justify-content: left;
+            color: white;
             padding: 5px;
         }
 
-        #message-container div:nth-child(2n) {
-            background-color: #FFF;
-        }
-
         #send-container {
+            justify-content: left;
             position: fixed;
             padding-bottom: 30px;
             bottom: 0;
             background-color: white;
             max-width: 2560px;
-            width: 100%;
+            width: 80%;
             display: flex;
         }
 
@@ -51,6 +63,7 @@
 
 <body>
     <div id="message-container"></div>
+    <div id="room-users-container"></div>
     <form id="send-container">
         <input type="text" id="message-input">
         <button type="submit" id="send-button">Send</button>

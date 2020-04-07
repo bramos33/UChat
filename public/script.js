@@ -3,10 +3,12 @@ const messageContainer = document.getElementById('message-container')
 const roomContainer = document.getElementById('room-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
+const roomUserContainer = document.getElementById('room-users-container')
 
 if (messageForm != null) {
   const name = prompt('What is your name?')
   appendMessage('You joined')
+  appendUser(name)
   socket.emit('new-user', roomName, name)
 
   messageForm.addEventListener('submit', e => {
@@ -34,6 +36,7 @@ socket.on('chat-message', data => {
 
 socket.on('user-connected', name => {
   appendMessage(`${name} connected`)
+  appendUser(name)
 })
 
 socket.on('user-disconnected', name => {
@@ -44,4 +47,10 @@ function appendMessage(message) {
   const messageElement = document.createElement('div')
   messageElement.innerText = message
   messageContainer.append(messageElement)
+}
+
+function appendUser(name) {
+  const userElement = document.createElement('div')
+  userElement.innerText = name
+  roomUserContainer.append(userElement)
 }

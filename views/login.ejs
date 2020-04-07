@@ -16,7 +16,7 @@
 				background-size: cover;
 			}
 
-			.title {
+			#title {
 				width: 300px;
 				margin: 0 auto;
 				text-align: center;
@@ -26,7 +26,7 @@
 				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 			}
 
-			.login-form {
+			#login-form {
 				width: 300px;
 				margin: 0 auto;
 				text-align: center;
@@ -36,7 +36,7 @@
 				font-family: "Book Antiqua", Palatino, serif;
 			}
 
-			.login-form input[type="text"] {
+			#login-form input[type="text"] {
 				background-color: #3CBC8D;
 				color: #A52A2A;
 				width: 100%;
@@ -46,7 +46,7 @@
 				box-sizing: border-box;
 			}
 
-			.login-form input[type="password"] {
+			#login-form input[type="password"] {
 				background-color: #3CBC8D;
 				color: #A52A2A;
 				width: 100%;
@@ -56,7 +56,7 @@
 				box-sizing: border-box;
 			}
 
-			#login-form input[type="submit"] {
+			#login-form button {
 				width: 100%;
 				padding: 15px;
 				background-color: #7B7D7D;
@@ -70,32 +70,17 @@
 	</head>
 
 	<body>
-		<div class="title">
+		<div id="title">
 			<h1>UChat</h1>
 		</div>
 
 
-			<form class="login-form" action="/" method="POST">
-				User Name: <input type="text" id="username" name="username" required />
-				Password: <input type="password" id="password" name="password" required />
-				<button type="submit" onclick="validate()">Log In</button>
+			<form id="login-form" action="/" method="POST">
+				User Name: <input type="text" id="username" required />
+				Password: <input type="password" id="password" required />
+				<button type="submit">Log In</button>
 			</form>
 		
 	</body>
-
-	<!-- <body>
-
-		<div class="login-form">
-
-			<h1>UChat</h1>
-
-			<form class="login-form" id="loginform" action="/index">
-
-				User Name: <input type="text" id="username" name="username" required />
-				Password: <input type="password" id="password" name="password" required />
-				<input class=".login-form input" type="button" value="Login" id="submit" onclick="validate()" />
-			</form>
-		</div>
-	</body> -->
 
 	</html>>

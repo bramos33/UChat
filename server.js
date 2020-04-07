@@ -9,9 +9,13 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 io.bind
+
 const rooms = {}
+var loggedIn = false
+var validated = false
+
 app.get('/', (req, res) => {
-  if (loggedIn) {
+  if (validated&&loggedIn) {
     res.render('index', { rooms: rooms })
   } else {
     res.redirect('/login')
@@ -22,10 +26,11 @@ app.get('/login', (req, res) => {
   res.render('login')
 })
 
-app.post('/', (req, res) => {
-  loggedIn = true
-    res.redirect('/')
-})
+    app.post('/', (req, res) => {
+        loggedIn = true
+        res.redirect('/')
+      
+    })
 
 
 app.post('/room', (req, res) => {
@@ -48,6 +53,10 @@ app.get('/:room', (req, res) => {
 server.listen(3000)
 
 io.on('connection', socket => {
+  console.log('user connected');
+  socket.on('validate', data => {
+    validated = data
+  })
   socket.on('new-user', (room, name) => {
     socket.join(room)
     rooms[room].users[socket.id] = name
