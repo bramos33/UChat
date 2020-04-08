@@ -30,8 +30,6 @@
             font-size: 25px;
         }
 
-        
-
         #room-users-container {
             padding: 5px;
             margin: 0px;
@@ -113,10 +111,21 @@
         #message-input {
             flex-grow: 1;
         }
+
+        #button button{
+            position: fixed;
+            margin: 5px;
+            z-index: 10;
+        }
+
     </style>
 </head>
 
 <body>
+    <form id="button" action="/goback" method="POST">
+        <button type="submit">Go Back</button>
+    </form>
+
     <div id="room-name"></div>
     <div id="message-container"></div>
     <div id="room-users-container"></div>
@@ -125,5 +134,4 @@
         <button type="submit" id="send-button">Send</button>
     </form>
 </body>
-
 </html>

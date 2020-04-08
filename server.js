@@ -14,7 +14,7 @@ var loggedIn = false
 var validated = false
 
 app.get('/', (req, res) => {
-  if (validated&&loggedIn) {
+  if (validated && loggedIn) {
     res.render('index', { rooms: rooms })
   } else {
     res.redirect('/login')
@@ -25,19 +25,31 @@ app.get('/login', (req, res) => {
   res.render('login')
 })
 
-    app.post('/', (req, res) => {
-        loggedIn = true
-        res.redirect('/')
-      
-    })
+app.post('/', (req, res) => {
+  loggedIn = true
+  res.redirect('/')
 
+})
+
+app.post('/goback', (req, res) => {
+  loggedIn = true
+  res.redirect('/')
+
+})
+
+app.post('/logout', (req, res) => {
+  loggedIn = false
+  validated = false
+  res.redirect('/login')
+
+})
 
 app.post('/room', (req, res) => {
   if (rooms[req.body.room] != null) {
     return res.redirect('/')
   }
   rooms[req.body.room] = { users: {} }
-  res.redirect(req.body.room)
+  res.redirect('/')
   // Send message that new room was created
   io.emit('room-created', req.body.room)
 })

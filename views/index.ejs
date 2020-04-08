@@ -57,6 +57,14 @@
 				font-weight: bold;
 				color: #33A7FF;
 			}
+			
+			#logout button{
+            	position: fixed;
+            	margin: 5px;
+            	z-index: 10;
+				left: 90%;
+				top: 5%;
+        	}	
 
 	</style>
 </head>
@@ -69,8 +77,12 @@
     </div>
     <form id="chat" form action="/room" method="POST">
         Room Name: <input name="room" type="text" required>
-        <button type="submit">Create Room</button>
-    </form>
+		<button type="submit">Create Room</button>
+	</form>
+		
+		<form id="logout" action="/logout" method="POST">
+			<button type="submit">Log Out</button>
+		</form>
 </body>
 
 </html>
