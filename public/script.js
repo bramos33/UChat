@@ -4,8 +4,11 @@ const roomContainer = document.getElementById('room-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 const roomUserContainer = document.getElementById('room-users-container')
+const roomTitle = document.getElementById('room-name')
+const online = document.getElementById('online')
 
 if (messageForm != null) {
+  roomTitle.append(roomName)
   const name = prompt('What is your name?')
   appendMessage('You joined')
   appendUser(name)
@@ -13,10 +16,13 @@ if (messageForm != null) {
 
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
-    const message = messageInput.value
-    appendMessage(`You: ${message}`)
-    socket.emit('send-chat-message', roomName, message)
-    messageInput.value = ''
+
+    if (messageInput.value != '') {
+      const message = messageInput.value
+      appendMessage(`You: ${message}`)
+      socket.emit('send-chat-message', roomName, message)
+      messageInput.value = ''
+    }
   })
 }
 
