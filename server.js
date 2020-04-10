@@ -10,11 +10,10 @@ app.use(express.urlencoded({ extended: true }))
 io.bind
 
 const rooms = {}
-var loggedIn = false
 var validated = false
 
 app.get('/', (req, res) => {
-  if (validated && loggedIn) {
+  if (validated) {
     res.render('index', { rooms: rooms })
   } else {
     res.redirect('/login')
@@ -64,23 +63,33 @@ app.get('/:room', (req, res) => {
 server.listen(3000)
 
 io.on('connection', socket => {
-  console.log('user connected');
+  console.log('user connected')
   socket.on('validate', data => {
     validated = data
   })
+
   socket.on('new-user', (room, name) => {
     socket.join(room)
     rooms[room].users[socket.id] = name
     socket.to(room).broadcast.emit('user-connected', name)
   })
+
+  socket.on('user-list', (room, name) => {
+    rooms[room].users[socket.id] = name
+    io.in(room).emit('list-users', rooms[room].users)
+  })
+
   socket.on('send-chat-message', (room, message) => {
     socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
   })
+  
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach(room => {
       socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
       delete rooms[room].users[socket.id]
+      io.in(room).emit('list-users', rooms[room].users)
     })
+    
   })
 })
 

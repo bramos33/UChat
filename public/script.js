@@ -11,15 +11,16 @@ if (messageForm != null) {
   roomTitle.append(roomName)
   const name = prompt('What is your name?')
   appendMessage('You joined')
-  appendUser(name)
   socket.emit('new-user', roomName, name)
-
+  socket.emit('user-list', roomName, name)
+  
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
 
     if (messageInput.value != '') {
       const message = messageInput.value
       appendMessage(`You: ${message}`)
+      console.log(message)
       socket.emit('send-chat-message', roomName, message)
       messageInput.value = ''
     }
@@ -27,12 +28,8 @@ if (messageForm != null) {
 }
 
 socket.on('room-created', room => {
-  const roomElement = document.createElement('div')
-  roomElement.innerText = room
   const roomLink = document.createElement('a')
-  roomLink.href = `/${room}`
-  roomLink.innerText = 'join'
-  roomContainer.append(roomElement)
+  roomLink = room
   roomContainer.append(roomLink)
 })
 
@@ -40,13 +37,20 @@ socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`)
 })
 
-socket.on('user-connected', name => {
+socket.on('user-connected', name =>  {
   appendMessage(`${name} connected`)
-  appendUser(name)
 })
+
+socket.on('list-users', data => {
+  roomUserContainer.innerHTML = ''
+  Object.keys(data).forEach(item =>
+    appendUser(data[item])
+    )
+}) 
 
 socket.on('user-disconnected', name => {
   appendMessage(`${name} disconnected`)
+
 })
 
 function appendMessage(message) {
